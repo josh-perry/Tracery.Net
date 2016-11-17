@@ -50,13 +50,14 @@ namespace TraceryNet
             // Set up the function table
             ModifierLookup = new Dictionary<string, Func<string, string>>
             {
-                { "a",          Modifiers.A },
-                { "beeSpeak",   Modifiers.BeeSpeak },
-                { "capitalize", Modifiers.Capitalize },
-                { "comma",      Modifiers.Comma },
-                { "inQuotes",   Modifiers.InQuotes },
-                { "s",          Modifiers.S },
-                { "ed",          Modifiers.Ed }
+                { "a",             Modifiers.A },
+                { "beeSpeak",      Modifiers.BeeSpeak },
+                { "capitalize",    Modifiers.Capitalize },
+                { "comma",         Modifiers.Comma },
+                { "inQuotes",      Modifiers.InQuotes },
+                { "s",             Modifiers.S },
+                { "ed",            Modifiers.Ed },
+                { "capitalizeAll", Modifiers.CapitalizeAll }
             };
         }
 

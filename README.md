@@ -4,7 +4,7 @@
 ## Status
 | Feature                           | Status                   |
 |-----------------------------------|--------------------------|
-| Capitalize All                    |                          |
+| Capitalize All                    | :heavy_check_mark:       |
 | Capitalize                        | :heavy_check_mark:       |
 | In Quotes                         | :heavy_check_mark:       |
 | Comma                             | :heavy_check_mark:       |

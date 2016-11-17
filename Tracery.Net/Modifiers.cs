@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace TraceryNet
 {
@@ -25,6 +27,16 @@ namespace TraceryNet
         public static string Capitalize(string str)
         {
             return char.ToUpper(str[0]) + str.Substring(1);
+        }
+
+        /// <summary>
+        /// Title cases the given string.
+        /// </summary>
+        /// <param name="arg"></param>
+        /// <returns>The modified string</returns>
+        public static string CapitalizeAll(string str)
+        {
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str);
         }
 
         /// <summary>

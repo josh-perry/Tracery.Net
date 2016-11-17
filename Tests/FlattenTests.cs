@@ -191,6 +191,24 @@ namespace Tests
         }
 
         [TestMethod]
+        public void Flatten_CaptitalizeAllCuteCat_CuteCat()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'you are a #animal.capitalizeAll#'," +
+                       "    'animal': 'cute cat'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "you are a Cute Cat");
+        }
+
+        [TestMethod]
         public void Flatten_PastTensifyBully_Bullied()
         {
             // Arrange
