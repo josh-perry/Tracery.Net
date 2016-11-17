@@ -4,13 +4,13 @@
 ## Status
 | Feature                           | Status                   |
 |-----------------------------------|--------------------------|
-| Capitalize All                    | :heavy_check_mark:       |
+| Capitalize All                    |                          |
 | Capitalize                        | :heavy_check_mark:       |
 | In Quotes                         | :heavy_check_mark:       |
 | Comma                             | :heavy_check_mark:       |
 | :honeybee: Speak                  | :heavy_check_mark:       |
 | Pluralize                         | :heavy_check_mark:       |
-| Past-tensifiy                     |                          |
+| Past-tensifiy                     | :heavy_check_mark:       |
 | Custom modifiers (C# scripting?)  |                          |
 | Saving data & actions             |                          |
 

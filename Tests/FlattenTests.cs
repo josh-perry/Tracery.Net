@@ -189,5 +189,59 @@ namespace Tests
             // Assert
             Assert.AreEqual(output, "you are A cat");
         }
+
+        [TestMethod]
+        public void Flatten_PastTensifyBully_Bullied()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'you #verb.ed#'," +
+                       "    'verb': 'bully'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "you bullied");
+        }
+
+        [TestMethod]
+        public void Flatten_PastTensifyQuack_Quacked()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'you #verb.ed#'," +
+                       "    'verb': 'quack'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "you quacked");
+        }
+
+        [TestMethod]
+        public void Flatten_PastTensifyCall_Called()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'you #verb.ed#?'," +
+                       "    'verb': 'call'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "you called?");
+        }
     }
 }

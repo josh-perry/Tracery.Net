@@ -55,7 +55,8 @@ namespace TraceryNet
                 { "capitalize", Modifiers.Capitalize },
                 { "comma",      Modifiers.Comma },
                 { "inQuotes",   Modifiers.InQuotes },
-                { "s",          Modifiers.S }
+                { "s",          Modifiers.S },
+                { "ed",          Modifiers.Ed }
             };
         }
 

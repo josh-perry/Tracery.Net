@@ -63,6 +63,46 @@ namespace TraceryNet
         }
 
         /// <summary>
+        /// Past-tensifies the specified string.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns>The modified string</returns>
+        public static string Ed(string str)
+        {
+            var lastChar = str[str.Length - 1];
+            var secondToLastChar = str[str.Length - 2];
+            var rest = "";
+
+            var index = str.IndexOf(' ');
+
+            if (index > 0)
+            {
+                rest = str.Substring(0, index);
+            }
+
+            switch (lastChar)
+            {
+                case 'y':
+                    // rays, convoys
+                    if (_isConsonant(secondToLastChar))
+                    {
+                        return str.Substring(0, str.Length - 1) + "ied" + rest;
+                    }
+
+                    break;
+
+                case 'e':
+                    // harpies, cries
+                    return str + "d" + rest;
+
+                default:
+                    return str + "ed" + rest;
+            }
+
+            return str;
+        }
+
+        /// <summary>
         /// Pluralises the given string.
         /// </summary>
         /// <param name="str"></param>
