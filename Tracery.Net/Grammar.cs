@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections.Generic;
+using Tracery.Net;
 
 namespace TraceryNet
 {
@@ -25,16 +26,11 @@ namespace TraceryNet
 
         public string Flatten(string rule)
         {
-            if(String.IsNullOrWhiteSpace(rule))
+            if (String.IsNullOrWhiteSpace(rule))
             {
                 return "";
             }
-            
-            return Resolve(rule);
-        }
 
-        public string Resolve(string rule)
-        {
             // Get all expansion symbols
             var regex = new Regex(@"#.+?#");
 
@@ -63,7 +59,7 @@ namespace TraceryNet
                     // If the rule has any children then pick one at random
                     var index = Random.Next(0, ((JArray)selectedRule).Count);
                     var chosen = selectedRule[index].ToString();
-                    var resolved = Resolve(chosen);
+                    var resolved = Flatten(chosen);
 
                     resolved = ApplyModifiers(resolved, modifiers);
 
@@ -71,8 +67,8 @@ namespace TraceryNet
                 }
                 else 
                 {
-                    // Otherwise resolve it
-                    var resolved = Resolve(selectedRule.ToString());
+                    // Otherwise flatten it
+                    var resolved = Flatten(selectedRule.ToString());
 
                     resolved = ApplyModifiers(resolved, modifiers);
 
@@ -85,29 +81,24 @@ namespace TraceryNet
 
         private string ApplyModifiers(string resolved, List<string> modifiers)
         {
-            var sentencePunctuation = new List<char> { ',', '.', '!', '?' };
-            char lastChar;
-
             foreach (var modifier in modifiers)
             {
                 switch(modifier)
                 {
                     case "capitalize":
-                        resolved = char.ToUpper(resolved[0]) + resolved.Substring(1);
+                        resolved = Modifiers.Capitalize(resolved);
                         break;
                     case "comma":
-                        lastChar = resolved[resolved.Length - 1];
-                        
-                        if(sentencePunctuation.Contains(lastChar))
-                            break;
-
-                        resolved += ",";
+                        resolved = Modifiers.Comma(resolved);
                         break;
                     case "inQuotes":
-                        resolved = "\"" + resolved + "\"";
+                        resolved = Modifiers.InQuotes(resolved);
                         break;
                     case "beeSpeak":
-                        resolved = resolved.Replace("s", "zzz");
+                        resolved = Modifiers.BeeSpeak(resolved);
+                        break;
+                    case "s":
+                        resolved = Modifiers.S(resolved);
                         break;
                     default:
                         continue;

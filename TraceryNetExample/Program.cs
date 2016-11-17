@@ -7,8 +7,7 @@ namespace TraceryNetExample
     {
         static void Main(string[] args)
         {
-            var source = File.ReadAllText(@"C:\TraceryExamples\test.json");
-            var grammar = new TraceryNet.Grammar(source);
+            var grammar = new TraceryNet.Grammar(new FileInfo(@"C:\TraceryExamples\test.json"));
 
             for (var i = 0; i < 100; i++)
             {
