@@ -2,6 +2,9 @@
 
 namespace Tracery.Net
 {
+    /// <summary>
+    /// A static class containing all of the built-in ("universal") modifiers that can be applied.
+    /// </summary>
     static class Modifiers
     {
         /// <summary>
@@ -72,13 +75,16 @@ namespace Tracery.Net
             switch (lastChar)
             {
                 case 'y':
-                    if(!_isConsonant(secondToLastChar))
+                    // rays, convoys
+                    if (!_isConsonant(secondToLastChar))
                     {
                         return str + "s";
                     }
 
+                    // harpies, cries
                     return str.Substring(0, str.Length - 1) + "ies";
                 case 'x':
+                    // oxen, boxen, foxen
                     return str.Substring(0, str.Length - 1) + "xen";
                 case 'z':
                     return str.Substring(0, str.Length - 1) + "zes";
