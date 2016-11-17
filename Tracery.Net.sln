@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracery.Net", "Tracery.Net\Tracery.Net.csproj", "{976CBF0D-B07C-4E91-9C00-BEE376102717}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C6E5AAD7-0FD9-447D-8315-CB2C59F4D935}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceryNetExample", "TraceryNetExample\TraceryNetExample.csproj", "{DF6C7759-EE69-4360-8481-10C599C3CBCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{976CBF0D-B07C-4E91-9C00-BEE376102717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{976CBF0D-B07C-4E91-9C00-BEE376102717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{976CBF0D-B07C-4E91-9C00-BEE376102717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{976CBF0D-B07C-4E91-9C00-BEE376102717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6E5AAD7-0FD9-447D-8315-CB2C59F4D935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6E5AAD7-0FD9-447D-8315-CB2C59F4D935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6E5AAD7-0FD9-447D-8315-CB2C59F4D935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6E5AAD7-0FD9-447D-8315-CB2C59F4D935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF6C7759-EE69-4360-8481-10C599C3CBCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF6C7759-EE69-4360-8481-10C599C3CBCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF6C7759-EE69-4360-8481-10C599C3CBCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF6C7759-EE69-4360-8481-10C599C3CBCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
