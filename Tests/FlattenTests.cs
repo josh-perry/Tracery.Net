@@ -22,5 +22,172 @@ namespace Tests
             // Assert
             Assert.AreEqual(output, "hello world");
         }
+
+
+        [TestMethod]
+        public void Flatten_ExpandSymbol_Animal()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'hello #animal#'," +
+                       "    'animal': 'cat'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "hello cat");
+        }
+
+
+        [TestMethod]
+        public void Flatten_Capitalize_FirstLetterCapitalized()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'hello #animal.capitalize#'," +
+                       "    'animal': 'cat'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "hello Cat");
+        }
+
+
+        [TestMethod]
+        public void Flatten_BeeSpeak_Beezz()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': '#animal.beeSpeak# are very important'," +
+                       "    'animal': 'bees'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "beezzz are very important");
+        }
+
+        [TestMethod]
+        public void Flatten_Comma_HelloCommaWorld()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': '#greeting.comma# #place#'," +
+                       "    'greeting': 'Hello'," +
+                       "    'place': 'world'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "Hello, world");
+        }
+
+        [TestMethod]
+        public void Flatten_InQuotes_HelloQuoteWorldQuote()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': '#greeting# #place.inQuotes#'," +
+                       "    'greeting': 'Hello'," +
+                       "    'place': 'world'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "Hello \"world\"");
+        }
+        
+        [TestMethod]
+        public void Flatten_A_ACat()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'you are #animal.a#'," +
+                       "    'animal': 'cat'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "you are a cat");
+        }
+
+        [TestMethod]
+        public void Flatten_A_AnElephant()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'you are #animal.a#'," +
+                       "    'animal': 'elephant'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "you are an elephant");
+        }
+
+        [TestMethod]
+        public void Flatten_CaptitalizeA_ACat()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'you are #animal.capitalize.a#'," +
+                       "    'animal': 'cat'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "you are a Cat");
+        }
+
+        [TestMethod]
+        public void Flatten_ACaptitalize_ACat()
+        {
+            // Arrange
+            var json = "{" +
+                       "    'origin': 'you are #animal.a.capitalize#'," +
+                       "    'animal': 'cat'" +
+                       "}";
+
+            var grammar = new TraceryNet.Grammar(json);
+
+            // Act
+            var output = grammar.Flatten("#origin#");
+
+            // Assert
+            Assert.AreEqual(output, "you are A cat");
+        }
     }
 }
