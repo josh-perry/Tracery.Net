@@ -21,7 +21,7 @@ namespace Tracery.Net
         /// Capitalizes the given string.
         /// </summary>
         /// <param name="str"></param>
-        /// <returns></returns>
+        /// <returns>The modified string</returns>
         public static string Capitalize(string str)
         {
             return char.ToUpper(str[0]) + str.Substring(1);
@@ -31,7 +31,7 @@ namespace Tracery.Net
         /// Places a comma after the string unless it's the end of a sentence.
         /// </summary>
         /// <param name="str"></param>
-        /// <returns></returns>
+        /// <returns>The modified string</returns>
         public static string Comma(string str)
         {
             var lastChar = str[str.Length - 1];
@@ -46,7 +46,7 @@ namespace Tracery.Net
         /// Wraps the given string in double-quotes.
         /// </summary>
         /// <param name="str"></param>
-        /// <returns></returns>
+        /// <returns>The modified string</returns>
         public static string InQuotes(string str)
         {
             return "\"" + str + "\""; ;
@@ -56,7 +56,7 @@ namespace Tracery.Net
         /// Replaces all s with zzz, like how bees speak.
         /// </summary>
         /// <param name="str"></param>
-        /// <returns></returns>
+        /// <returns>The modified string</returns>
         public static string BeeSpeak(string str)
         {
             return str.Replace("s", "zzz");
@@ -66,7 +66,7 @@ namespace Tracery.Net
         /// Pluralises the given string.
         /// </summary>
         /// <param name="str"></param>
-        /// <returns></returns>
+        /// <returns>The modified string</returns>
         public static string S(string str)
         {
             var lastChar = str[str.Length - 1];
@@ -93,6 +93,23 @@ namespace Tracery.Net
                 default:
                     return str + "s";
             }
+        }
+
+        /// <summary>
+        /// Prefixes the string with 'a' or 'an' as appropriate.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns>The modified string</returns>
+        public static string A(string str)
+        {
+            var lastChar = str[0];
+            
+            if (!_isConsonant(lastChar))
+            {
+                return "an " + str;
+            }
+
+            return "a " + str;
         }
 
         /// <summary>

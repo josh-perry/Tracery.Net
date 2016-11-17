@@ -130,6 +130,7 @@ namespace TraceryNet
         /// <returns>The resolved string with modifiers applied to it</returns>
         private string ApplyModifiers(string resolved, List<string> modifiers)
         {
+            // TODO: Convert switch to a function lookup
             // Iterate over each modifier
             foreach (var modifier in modifiers)
             {
@@ -150,6 +151,9 @@ namespace TraceryNet
                         break;
                     case "s":
                         resolved = Modifiers.S(resolved);
+                        break;
+                    case "a":
+                        resolved = Modifiers.A(resolved);
                         break;
                     default:
                         // Unknown modifier
