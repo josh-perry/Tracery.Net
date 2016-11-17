@@ -27,6 +27,11 @@ namespace TraceryNet
         private Random Random = new Random();
 
         /// <summary>
+        /// Modifier function table.
+        /// </summary>
+        public Dictionary<string, Func<string, string>> ModifierLookup;
+
+        /// <summary>
         /// Read all text from a file and pass it to the other constructor.
         /// </summary>
         /// <param name="source"></param>
@@ -40,7 +45,19 @@ namespace TraceryNet
         /// <param name="source"></param>
         public Grammar(string source)
         {
-            Rules = JsonConvert.DeserializeObject<dynamic>(source);    
+            // Populate the rules list
+            Rules = JsonConvert.DeserializeObject<dynamic>(source);
+
+            // Set up the function table
+            ModifierLookup = new Dictionary<string, Func<string, string>>
+            {
+                { "a",          Modifiers.A },
+                { "beeSpeak",   Modifiers.BeeSpeak },
+                { "capitalize", Modifiers.Capitalize },
+                { "comma",      Modifiers.Comma },
+                { "inQuotes",   Modifiers.InQuotes },
+                { "s",          Modifiers.S }
+            };
         }
 
         /// <summary>
@@ -130,36 +147,15 @@ namespace TraceryNet
         /// <returns>The resolved string with modifiers applied to it</returns>
         private string ApplyModifiers(string resolved, List<string> modifiers)
         {
-            // TODO: Convert switch to a function lookup
             // Iterate over each modifier
             foreach (var modifier in modifiers)
             {
-                // Look up the modifier in the universal (built-in) list and call the relevant static function
-                switch(modifier)
-                {
-                    case "capitalize":
-                        resolved = Modifiers.Capitalize(resolved);
-                        break;
-                    case "comma":
-                        resolved = Modifiers.Comma(resolved);
-                        break;
-                    case "inQuotes":
-                        resolved = Modifiers.InQuotes(resolved);
-                        break;
-                    case "beeSpeak":
-                        resolved = Modifiers.BeeSpeak(resolved);
-                        break;
-                    case "s":
-                        resolved = Modifiers.S(resolved);
-                        break;
-                    case "a":
-                        resolved = Modifiers.A(resolved);
-                        break;
-                    default:
-                        // Unknown modifier
-                        // TODO: Look up in a list of user created modifiers.
-                        continue;
-                }
+                // If there's no modifier by this name in the list, skip it
+                if(!ModifierLookup.ContainsKey(modifier))
+                    continue;
+
+                // Otherwise execute the function and take the output
+                resolved = ModifierLookup[modifier](resolved);
             }
 
             // Give back the string
@@ -167,3 +163,4 @@ namespace TraceryNet
         }
     }
 }
+ 
