@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Tracery.Net
+namespace TraceryNet
 {
     /// <summary>
     /// A static class containing all of the built-in ("universal") modifiers that can be applied.
@@ -112,7 +112,7 @@ namespace Tracery.Net
             return "a " + str;
         }
 
-        /// <summary>
+        /// <summary>ff
         /// Checks to see if the given character is a consonant.
         /// </summary>
         /// <param name="c"></param>
