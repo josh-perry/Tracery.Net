@@ -87,6 +87,12 @@ namespace TraceryNet
                 var modifiers = new List<string>();
                 modifiers = GetModifiers(match.Value);
 
+                // If there's no modifier with that name then skip
+                if(modifiers == null)
+                {
+                    continue;
+                }
+
                 // Get the selected rule
                 var selectedRule = Rules[matchName];
                 
