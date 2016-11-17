@@ -26,11 +26,6 @@ namespace TraceryNet
 
         public string Flatten(string rule)
         {
-            if (String.IsNullOrWhiteSpace(rule))
-            {
-                return "";
-            }
-
             // Get all expansion symbols
             var regex = new Regex(@"#.+?#");
 
