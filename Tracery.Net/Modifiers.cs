@@ -164,7 +164,7 @@ namespace TraceryNet
             return "a " + str;
         }
 
-        /// <summary>ff
+        /// <summary>
         /// Checks to see if the given character is a consonant.
         /// </summary>
         /// <param name="c"></param>
