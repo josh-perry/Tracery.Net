@@ -23,7 +23,6 @@ namespace Tests
             Assert.AreEqual(output, "hello world");
         }
 
-
         [TestMethod]
         public void Flatten_ExpandSymbol_Animal()
         {
@@ -42,7 +41,6 @@ namespace Tests
             Assert.AreEqual(output, "hello cat");
         }
 
-
         [TestMethod]
         public void Flatten_Capitalize_FirstLetterCapitalized()
         {
@@ -60,7 +58,6 @@ namespace Tests
             // Assert
             Assert.AreEqual(output, "hello Cat");
         }
-
 
         [TestMethod]
         public void Flatten_BeeSpeak_Beezz()

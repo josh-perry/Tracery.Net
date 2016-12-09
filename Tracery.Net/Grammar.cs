@@ -32,9 +32,20 @@ namespace TraceryNet
         public static Regex ExpansionRegex = new Regex(@"(?<!\[|:)(?!\])#.+?(?<!\[|:)#(?!\])");
 
         /// <summary>
+        /// Regex for matching save symbols.
+        /// [hero:#name#], [heroPet:#animal#] etc.
+        /// </summary>
+        public static Regex SaveSymbolRegex = new Regex(@"\[.+?\]");
+
+        /// <summary>
         /// Modifier function table.
         /// </summary>
         public Dictionary<string, Func<string, string>> ModifierLookup;
+
+        /// <summary>
+        /// Key/value store for savable data.
+        /// </summary>
+        public Dictionary<string, string> SaveData;
 
         /// <summary>
         /// Read all text from a file and pass it to the other constructor.
@@ -65,6 +76,9 @@ namespace TraceryNet
                 { "ed",            Modifiers.Ed },
                 { "capitalizeAll", Modifiers.CapitalizeAll }
             };
+
+            // Initialize the save storage
+            SaveData = new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -76,11 +90,23 @@ namespace TraceryNet
         /// <returns>The resultant string, flattened from the rules.</returns>
         public string Flatten(string rule)
         {
-            // Iterate expansion symbols
-            foreach (Match match in ExpansionRegex.Matches(rule))
+            var expansionMatches = ExpansionRegex.Matches(rule);
+
+            if (expansionMatches.Count == 0)
             {
+                ResolveSaveSymbols(rule);
+            }
+
+            // Iterate expansion symbols
+            foreach (Match match in expansionMatches)
+            {
+                ResolveSaveSymbols(match.Value);
+                
                 // Remove the # surrounding the symbol name
                 var matchName = match.Value.Replace("#", "");
+
+                // Remove the save symbols
+                matchName = SaveSymbolRegex.Replace(matchName, "");
 
                 if (matchName.Contains("."))
                 {
@@ -98,8 +124,8 @@ namespace TraceryNet
                 }
 
                 // Get the selected rule
-                var selectedRule = Rules[matchName];
-
+                var selectedRule = Rules[matchName] ?? SaveData[matchName] ?? matchName;
+            
                 // If the rule has any children then pick one at random
                 if (selectedRule.Type == JTokenType.Array)
                 {
@@ -123,6 +149,38 @@ namespace TraceryNet
             }
 
             return rule;
+        }
+
+        /// <summary>
+        /// Resolves and saves any data marked by save symbols.
+        /// </summary>
+        /// <param name="rule"></param>
+        private void ResolveSaveSymbols(string rule)
+        {
+            // Get all save symbols
+            foreach (Match saveMatch in SaveSymbolRegex.Matches(rule))
+            {
+                // [hero:#name#]
+                var save = saveMatch.Value.Replace("[", "").Replace("]",  "");
+
+                // If it's just [hero], then flatten #hero#
+                if(!save.Contains(":"))
+                {
+                    Flatten($"#{save}#");
+                    continue;
+                }
+
+                // hero:#name#
+                var saveSplit = save.Split(':');
+
+                // hero
+                var name = saveSplit[0];
+
+                // Flatten: #name#
+                var data = Flatten(saveSplit[1]);
+
+                SaveData[name] = data;
+            }
         }
 
         /// <summary>

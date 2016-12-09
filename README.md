@@ -12,5 +12,4 @@
 | Pluralize                         | :heavy_check_mark:       |
 | Past-tensifiy                     | :heavy_check_mark:       |
 | Custom modifiers (C# scripting?)  |                          |
-| Saving data & actions             |                          |
-
+| Saving data & actions             | :heavy_check_mark:       |

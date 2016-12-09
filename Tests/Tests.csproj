@@ -53,6 +53,7 @@
     <Compile Include="ExpansionRegexTests.cs" />
     <Compile Include="FlattenTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveSymbolTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tracery.Net\Tracery.Net.csproj">
