@@ -71,7 +71,7 @@ namespace TraceryNet
         public string Flatten(string rule)
         {
             // Get all expansion symbols
-            var regex = new Regex(@"#.+?#");
+            var regex = new Regex(@"(?<!\[|:)(?!\])#.+?(?<!\[|:)#(?!\])");
             
             // Iterate expansion symbols
             foreach (Match match in regex.Matches(rule))
@@ -96,10 +96,10 @@ namespace TraceryNet
 
                 // Get the selected rule
                 var selectedRule = Rules[matchName];
-                
+
+                // If the rule has any children then pick one at random
                 if (selectedRule.Type == JTokenType.Array)
                 {
-                    // If the rule has any children then pick one at random
                     var index = Random.Next(0, ((JArray)selectedRule).Count);
                     var chosen = selectedRule[index].ToString();
                     var resolved = Flatten(chosen);
