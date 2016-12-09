@@ -26,6 +26,12 @@ namespace TraceryNet
         private Random Random = new Random();
 
         /// <summary>
+        /// Regex for matching expansion symbols.
+        /// #animal# etc.
+        /// </summary>
+        public static Regex ExpansionRegex = new Regex(@"(?<!\[|:)(?!\])#.+?(?<!\[|:)#(?!\])");
+
+        /// <summary>
         /// Modifier function table.
         /// </summary>
         public Dictionary<string, Func<string, string>> ModifierLookup;
@@ -70,11 +76,8 @@ namespace TraceryNet
         /// <returns>The resultant string, flattened from the rules.</returns>
         public string Flatten(string rule)
         {
-            // Get all expansion symbols
-            var regex = new Regex(@"(?<!\[|:)(?!\])#.+?(?<!\[|:)#(?!\])");
-            
             // Iterate expansion symbols
-            foreach (Match match in regex.Matches(rule))
+            foreach (Match match in ExpansionRegex.Matches(rule))
             {
                 // Remove the # surrounding the symbol name
                 var matchName = match.Value.Replace("#", "");
