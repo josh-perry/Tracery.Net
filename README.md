@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/josh-perry/Tracery.Net.svg?branch=master)](https://travis-ci.org/josh-perry/Tracery.Net)
+
 # Tracery.Net
 .NET port of Kate Compton's [Tracery](https://github.com/galaxykate/tracery).
 
