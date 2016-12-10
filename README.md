@@ -40,5 +40,5 @@ The dragon was feeling dopey.
 | :honeybee: Speak                  | :heavy_check_mark:       |
 | Pluralize                         | :heavy_check_mark:       |
 | Past-tensifiy                     | :heavy_check_mark:       |
-| Custom modifiers (C# scripting?)  |                          |
+| Custom modifiers                  | :heavy_check_mark:       |
 | Saving data & actions             | :heavy_check_mark:       |

@@ -76,9 +76,19 @@ namespace TraceryNet
                 { "ed",            Modifiers.Ed },
                 { "capitalizeAll", Modifiers.CapitalizeAll }
             };
-
+            
             // Initialize the save storage
             SaveData = new Dictionary<string, string>();
+        }
+
+        /// <summary>
+        /// Add a modifier to the modifier lookup.
+        /// </summary>
+        /// <param name="name">The name to identify the modifier with.</param>
+        /// <param name="func">A method that returns a string and takes a string as a param.</param>
+        public void AddModifier(string name, Func<string, string> func)
+        {
+            ModifierLookup[name] = func;
         }
 
         /// <summary>
