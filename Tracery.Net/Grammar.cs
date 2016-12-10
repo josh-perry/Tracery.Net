@@ -90,8 +90,10 @@ namespace TraceryNet
         /// <returns>The resultant string, flattened from the rules.</returns>
         public string Flatten(string rule)
         {
+            // Get expansion symbols
             var expansionMatches = ExpansionRegex.Matches(rule);
 
+            // If there are no expansion symbols then attempt to resolve any save symbols
             if (expansionMatches.Count == 0)
             {
                 ResolveSaveSymbols(rule);
