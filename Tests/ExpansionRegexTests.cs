@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System.Text.RegularExpressions;
+﻿using NUnit.Framework;
+
 using TraceryNet;
 
 namespace Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ExpansionRegexTests
     {
-        [TestMethod]
+        [Test]
         public void ExpansionRegex_OneMatchNoModifiers_OneMatch()
         {
             // Arrange
@@ -18,11 +17,11 @@ namespace Tests
             var matches = Grammar.ExpansionRegex.Matches(rule);
 
             // Assert
-            Assert.IsTrue(matches.Count == 1);
-            Assert.IsTrue(matches[0].Value == "#colour#");
+            Assert.AreEqual(matches.Count, 1);
+            Assert.AreEqual(matches[0].Value, "#colour#");
         }
 
-        [TestMethod]
+        [Test]
         public void ExpansionRegex_TwoMatchesNoModifiers_TwoMatches()
         {
             // Arrange
@@ -32,12 +31,12 @@ namespace Tests
             var matches = Grammar.ExpansionRegex.Matches(rule);
 
             // Assert
-            Assert.IsTrue(matches.Count == 2);
-            Assert.IsTrue(matches[0].Value == "#colour#");
-            Assert.IsTrue(matches[1].Value == "#animal#");
+            Assert.AreEqual(matches.Count, 2);
+            Assert.AreEqual(matches[0].Value, "#colour#");
+            Assert.AreEqual(matches[1].Value, "#animal#");
         }
 
-        [TestMethod]
+        [Test]
         public void ExpansionRegex_OneMatchOneModifier_OneMatch()
         {
             // Arrange
@@ -47,11 +46,11 @@ namespace Tests
             var matches = Grammar.ExpansionRegex.Matches(rule);
 
             // Assert
-            Assert.IsTrue(matches.Count == 1);
-            Assert.IsTrue(matches[0].Value == "#animal.capitalize#");
+            Assert.AreEqual(matches.Count, 1);
+            Assert.AreEqual(matches[0].Value, "#animal.capitalize#");
         }
 
-        [TestMethod]
+        [Test]
         public void ExpansionRegex_FourMatchesSentence_FourMatches()
         {
             // Arrange
@@ -61,14 +60,14 @@ namespace Tests
             var matches = Grammar.ExpansionRegex.Matches(rule);
 
             // Assert
-            Assert.IsTrue(matches.Count == 4);
-            Assert.IsTrue(matches[0].Value == "#animal#");
-            Assert.IsTrue(matches[1].Value == "#adjective.comma#");
-            Assert.IsTrue(matches[2].Value == "#adjective.comma#");
-            Assert.IsTrue(matches[3].Value == "#adjective#");
+            Assert.AreEqual(matches.Count, 4);
+            Assert.AreEqual(matches[0].Value, "#animal#");
+            Assert.AreEqual(matches[1].Value, "#adjective.comma#");
+            Assert.AreEqual(matches[2].Value, "#adjective.comma#");
+            Assert.AreEqual(matches[3].Value, "#adjective#");
         }
 
-        [TestMethod]
+        [Test]
         public void ExpansionRegex_OneMatchSaveSymbol_OneMatch()
         {
             // Arrange
@@ -78,11 +77,11 @@ namespace Tests
             var matches = Grammar.ExpansionRegex.Matches(rule);
 
             // Assert
-            Assert.IsTrue(matches.Count == 1);
+            Assert.AreEqual(matches.Count, 1);
 
             // Even though there's sub-expansion symbols, it should only match once around
             // the whole thing.
-            Assert.IsTrue(matches[0].Value == "#[hero:#name#][heroPet:#animal#]story#");
+            Assert.AreEqual(matches[0].Value, "#[hero:#name#][heroPet:#animal#]story#");
         }
     }
 }

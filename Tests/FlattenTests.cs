@@ -1,12 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
+﻿using NUnit.Framework;
 
 namespace Tests
 {
-    [TestClass]
+    [TestFixture]
     public class FlattenTests
     {
-        [TestMethod]
+        [Test]
         public void Flatten_HelloWorld_Success()
         {
             // Arrange
@@ -23,7 +22,7 @@ namespace Tests
             Assert.AreEqual(output, "hello world");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_ExpandSymbol_Animal()
         {
             // Arrange
@@ -41,7 +40,7 @@ namespace Tests
             Assert.AreEqual(output, "hello cat");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_Capitalize_FirstLetterCapitalized()
         {
             // Arrange
@@ -59,7 +58,7 @@ namespace Tests
             Assert.AreEqual(output, "hello Cat");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_BeeSpeak_Beezz()
         {
             // Arrange
@@ -77,7 +76,7 @@ namespace Tests
             Assert.AreEqual(output, "beezzz are very important");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_Comma_HelloCommaWorld()
         {
             // Arrange
@@ -96,7 +95,7 @@ namespace Tests
             Assert.AreEqual(output, "Hello, world");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_InQuotes_HelloQuoteWorldQuote()
         {
             // Arrange
@@ -115,7 +114,7 @@ namespace Tests
             Assert.AreEqual(output, "Hello \"world\"");
         }
         
-        [TestMethod]
+        [Test]
         public void Flatten_A_ACat()
         {
             // Arrange
@@ -133,7 +132,7 @@ namespace Tests
             Assert.AreEqual(output, "you are a cat");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_A_AnElephant()
         {
             // Arrange
@@ -151,7 +150,7 @@ namespace Tests
             Assert.AreEqual(output, "you are an elephant");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_CaptitalizeA_ACat()
         {
             // Arrange
@@ -169,7 +168,7 @@ namespace Tests
             Assert.AreEqual(output, "you are a Cat");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_ACaptitalize_ACat()
         {
             // Arrange
@@ -187,7 +186,7 @@ namespace Tests
             Assert.AreEqual(output, "you are A cat");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_CaptitalizeAllCuteCat_CuteCat()
         {
             // Arrange
@@ -205,7 +204,7 @@ namespace Tests
             Assert.AreEqual(output, "you are a Cute Cat");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_PastTensifyBully_Bullied()
         {
             // Arrange
@@ -223,7 +222,7 @@ namespace Tests
             Assert.AreEqual(output, "you bullied");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_PastTensifyQuack_Quacked()
         {
             // Arrange
@@ -241,7 +240,7 @@ namespace Tests
             Assert.AreEqual(output, "you quacked");
         }
 
-        [TestMethod]
+        [Test]
         public void Flatten_PastTensifyCall_Called()
         {
             // Arrange

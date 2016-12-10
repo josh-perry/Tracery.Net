@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace Tests
 {
-    [TestClass]
+    [TestFixture]
     public class SaveSymbolTests
     {
-        [TestMethod]
+        [Test]
         public void SaveSymbol_NoExpansionSymbol_Saves()
         {
             // Arrange
@@ -23,7 +23,7 @@ namespace Tests
             Assert.IsTrue(output == "His name was Alfred.");
         }
 
-        [TestMethod]
+        [Test]
         public void SaveSymbol_OneExpansionSymbol_Saves()
         {
             // Arrange
@@ -42,7 +42,7 @@ namespace Tests
             Assert.IsTrue(output == "His name was Alfred.");
         }
 
-        [TestMethod]
+        [Test]
         public void SaveSymbol_NoExpansionSymbolWithModifier_Saves()
         {
             // Arrange
@@ -60,8 +60,7 @@ namespace Tests
             Assert.IsTrue(output == "His name was Alfred.");
         }
 
-        [TestMethod]
-        [Description("hello")]
+        [Test]
         public void SaveSymbol_OneLevelDeep_Saves()
         {
             // Arrange
@@ -79,7 +78,7 @@ namespace Tests
             Assert.IsTrue(output == "Luigi");
         }
 
-        [TestMethod]
+        [Test]
         public void SaveSymbol_TwoLevelsDeep_Saves()
         {
             // Arrange
