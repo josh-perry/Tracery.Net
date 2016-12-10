@@ -30,6 +30,32 @@ The dragon was feeling dopey.
 
 [See TraceryNetExample project for more](TraceryNetExample/Program.cs)
 
+## Custom modifiers
+```cs
+var json = "{" +
+           "    'origin': '#sentence.toUpper#'," +
+           "    'sentence': 'hello cat'" +
+           "}";
+
+var grammar = new TraceryNet.Grammar(json);
+grammar.AddModifier("toUpper", modifier);
+
+var output = grammar.Flatten("#origin#");
+```
+
+Where modifier is something like this:
+```cs
+Func<string, string> modifier = delegate (string i)
+{
+    return i.ToUpper();
+};
+```
+
+Output:
+```
+HELLO CAT
+```
+
 ## Status
 | Feature                           | Status                   |
 |-----------------------------------|--------------------------|
