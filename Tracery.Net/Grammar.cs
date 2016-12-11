@@ -6,6 +6,8 @@ using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections.Generic;
+using YamlDotNet.Serialization;
+using Tracery.Net;
 
 namespace TraceryNet
 {
@@ -62,7 +64,7 @@ namespace TraceryNet
         public Grammar(string source)
         {
             // Populate the rules list
-            Rules = JsonConvert.DeserializeObject<dynamic>(source);
+            PopulateRules(source);
 
             // Set up the function table
             ModifierLookup = new Dictionary<string, Func<string, string>>
@@ -79,6 +81,36 @@ namespace TraceryNet
             
             // Initialize the save storage
             SaveData = new Dictionary<string, string>();
+        }
+
+        /// <summary>
+        /// Deserialize the source string from either json or yaml and populate the rules
+        /// object.
+        /// </summary>
+        /// <param name="source"></param>
+        private void PopulateRules(string source)
+        {
+            // Is it valid json?
+            if (InputValidators.IsValidJson(source))
+            {
+                // Deserialize directly
+                Rules = JsonConvert.DeserializeObject<dynamic>(source);
+            }
+            // Is it valid yaml?
+            else if (InputValidators.IsValidYaml(source))
+            {
+                // Deserialize yaml
+                var deserializer = new Deserializer();
+                var yamlObject = deserializer.Deserialize(new StringReader(source));
+
+                // Reserialize the yaml as json into the Rules object
+                var rules = JsonConvert.SerializeObject(yamlObject);
+                Rules = JsonConvert.DeserializeObject<dynamic>(rules);
+            }
+            else
+            {
+                throw new Exception("Grammar file doesn't seem to be valid JSON or YAML!");
+            }
         }
 
         /// <summary>
