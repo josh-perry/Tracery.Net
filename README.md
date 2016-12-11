@@ -56,6 +56,22 @@ Output:
 HELLO CAT
 ```
 
+## YAML
+YAML can be used as a source instead of JSON:
+```yaml
+--- 
+origin: "#sentence#"
+sentence: "#greeting# #place#"
+place:
+  - "world"
+  - "galaxy"
+  - "universe"
+greeting:
+  - "Hello"
+  - "Hey"
+  - "Sup"
+```
+
 ## Status
 | Feature                           | Status                   |
 |-----------------------------------|--------------------------|
