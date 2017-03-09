@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/josh-perry/Tracery.Net.svg?branch=master)](https://travis-ci.org/josh-perry/Tracery.Net)
+[![Build Status](https://travis-ci.org/josh-perry/Tracery.Net.svg?branch=master)](https://travis-ci.org/josh-perry/Tracery.Net) [![NuGet version](https://badge.fury.io/nu/Tracery.Net.svg)](https://badge.fury.io/nu/Tracery.Net)
 
 # Tracery.Net
-.NET port of Kate Compton's [Tracery](https://github.com/galaxykate/tracery).
+.NET port of Kate Compton's [Tracery](https://github.com/galaxykate/tracery). Now on [NuGet](https://www.nuget.org/packages/Tracery.Net)!
 
 ## Minimal example
 ```cs
