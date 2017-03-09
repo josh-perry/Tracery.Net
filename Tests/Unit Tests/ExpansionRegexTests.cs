@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
-
 using TraceryNet;
 
-namespace Tests
+namespace Tests.Unit_Tests
 {
     [TestFixture]
     public class ExpansionRegexTests

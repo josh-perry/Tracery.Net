@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
+using NUnit.Framework;
 
-namespace Tests
+namespace Tests.Unit_Tests
 {
     [TestFixture]
     public class CustomModifiersTest

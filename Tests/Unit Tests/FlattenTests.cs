@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Tests
+namespace Tests.Unit_Tests
 {
     [TestFixture]
     public class FlattenTests

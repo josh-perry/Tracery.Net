@@ -1,9 +1,8 @@
-﻿using NUnit.Framework;
-using System.IO;
-using System.Text;
+﻿using System.Text;
+using NUnit.Framework;
 using TraceryNet;
 
-namespace Tests
+namespace Tests.Unit_Tests
 {
     [TestFixture]
     class YamlTests
